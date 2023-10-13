@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+
+  # Приложение 1 пишет 5 рандомных лога в секунду
+  first-app:
+    build:
+      dockerfile: first-app.Dockerfile
+    container_name: first-app
+    image: first-app:dev
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: first-app
+
+  # Приложение 2 пишет 5 рандомных лога в секунду
+  second-app:
+    build:
+      dockerfile: second-app.Dockerfile
+    container_name: second-app
+    image: second-app:dev
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: second-app
+
+  fluent-bit:
+    image: fluent/fluent-bit
+    container_name: fluent-bit
+    ports:
+      - "24224:24224"
+    volumes:
+      - ./fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+      - ./fluent-bit/parsers.conf:/etc/fluent-bit/parsers.conf
+      - ./fluent-bit/cb_split.lua:/etc/fluent-bit/cb_split.lua
+
+  ch:
+    image: clickhouse/clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    volumes:
+      - ./clickhouse/db_data:/var/lib/clickhouse/
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      GF_INSTALL_PLUGINS: grafana-clickhouse-datasource
+
+volumes:
+  grafana-storage:
