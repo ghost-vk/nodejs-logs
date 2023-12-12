@@ -30,10 +30,10 @@ $ clickhouse-client
 Теперь клиент подключен к БД `default`
 
 **Создание таблицы логов**. Чтобы создать таблицу логов выполните SQL запрос
-предоставленный в [create-table-test_2.sql](./clickhouse-setup/create-table-test_2.sql).
+предоставленный в [create-table.sql](./clickhouse-setup/create-table.sql).
 
 **Сменить пользователю default пароль**. По умолчанию пароль не задан. Чтобы задать пароль, нужно обновить файл
-`/etc/clickhouse-server-users.xml`. В файле `fluent-bit.conf` явно задан пароль `qwerty`,
+`/etc/clickhouse-server/users.xml`. В файле `fluent-bit.conf` явно задан пароль `qwerty`,
 зададим его для пользователя `default`.
 
 В секции `<users>` нужно добавить пароль в тег `<password>`:

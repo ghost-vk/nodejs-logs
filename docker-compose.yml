@@ -34,7 +34,6 @@ services:
     volumes:
       - ./fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
       - ./fluent-bit/parsers.conf:/etc/fluent-bit/parsers.conf
-      - ./fluent-bit/cb_split.lua:/etc/fluent-bit/cb_split.lua
 
   ch:
     image: clickhouse/clickhouse-server
