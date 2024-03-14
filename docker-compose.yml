@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-
   # Приложение 1 пишет 5 рандомных лога в секунду
   first-app:
     build:
@@ -46,13 +45,14 @@ services:
         hard: 262144
     volumes:
       - ./clickhouse/db_data:/var/lib/clickhouse/
+      - ./clickhouse/config/users.xml:/etc/clickhouse-server/users.xml
 
   grafana:
     image: grafana/grafana-enterprise
     container_name: grafana
     restart: unless-stopped
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
     environment:
