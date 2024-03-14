@@ -1,14 +1,19 @@
 {
-  "name": "dumb-log",
   "version": "1.0.0",
-  "main": "src/first-app.js",
-  "license": "MIT",
-  "dependencies": {
-    "@faker-js/faker": "^8.1.0",
-    "pino": "^8.15.6"
+  "packageManager": "yarn@4.1.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0"
   },
   "scripts": {
-    "start-first": "node src/first-app.js",
-    "start-second": "node src/second-app.js"
+    "postinstall": "husky",
+    "prettier": "prettier --write ."
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   }
 }

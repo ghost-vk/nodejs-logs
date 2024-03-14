@@ -1,0 +1,14 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "main": "first-app.js",
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^8.1.0",
+    "pino": "^8.15.6"
+  },
+  "scripts": {
+    "start-first": "node first-app.js",
+    "start-second": "node second-app.js"
+  }
+}

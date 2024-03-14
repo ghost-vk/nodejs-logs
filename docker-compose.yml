@@ -1,10 +1,11 @@
-version: "3.9"
+version: '3.9'
 
 services:
-  # Приложение 1 пишет 5 рандомных лога в секунду
+  # node приложение 1; пишет 5 рандомных лога в секунду
   first-app:
     build:
-      dockerfile: first-app.Dockerfile
+      dockerfile: ./packages/node/first-app.Dockerfile
+      context: .
     container_name: first-app
     image: first-app:dev
     logging:
@@ -13,10 +14,11 @@ services:
         fluentd-address: localhost:24224
         tag: first-app
 
-  # Приложение 2 пишет 5 рандомных лога в секунду
+  # node приложение 2; пишет 5 рандомных лога в секунду
   second-app:
     build:
-      dockerfile: second-app.Dockerfile
+      dockerfile: ./packages/node/second-app.Dockerfile
+      context: .
     container_name: second-app
     image: second-app:dev
     logging:
@@ -29,30 +31,35 @@ services:
     image: fluent/fluent-bit
     container_name: fluent-bit
     ports:
-      - "24224:24224"
+      - '24224:24224'
     volumes:
       - ./fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
       - ./fluent-bit/parsers.conf:/etc/fluent-bit/parsers.conf
 
-  ch:
+  clickhouse:
     image: clickhouse/clickhouse-server
     ports:
-      - "8123:8123"
-      - "9000:9000"
+      - '8123:8123'
+      - '9000:9000'
+    environment:
+      CLICKHOUSE_DB: default
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: qwerty
     ulimits:
       nofile:
         soft: 262144
         hard: 262144
     volumes:
-      - ./clickhouse/db_data:/var/lib/clickhouse/
+      - clickhouse_data:/var/lib/clickhouse/
       - ./clickhouse/config/users.xml:/etc/clickhouse-server/users.xml
+      - ./clickhouse/config/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
   grafana:
     image: grafana/grafana-enterprise
     container_name: grafana
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - grafana-storage:/var/lib/grafana
     environment:
@@ -60,3 +67,4 @@ services:
 
 volumes:
   grafana-storage:
+  clickhouse_data:

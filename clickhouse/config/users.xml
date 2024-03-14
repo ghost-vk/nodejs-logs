@@ -8,7 +8,7 @@
     </profiles>
     <users>
         <default>
-            <password>admin1admin1</password>
+            <password>qwerty</password>
             <networks>
                 <ip>::/0</ip>
             </networks>

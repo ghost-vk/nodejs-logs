@@ -1,14 +1,14 @@
 # Пример настройки логирования с использованием Clickhouse и Fluentbit
 
-В `docker-compose.yml` определены два приложения: `first-app`, `second-app`. 
-В репозитории показаны настройки fluent-bit, сервисов docker compose, clickhouse для
-настройки пайплайна логов.
+В `docker-compose.yml` определены два приложения: `first-app`, `second-app`. В
+репозитории показаны настройки fluent-bit, сервисов docker compose, clickhouse
+для настройки пайплайна логов.
 
-Изначально docker забирает логи из stdout контейнера, затем направляет 
-их в fluent-bit с помощью драйвера fluentd. fluent-bit парсит и фильтрует логи,
-а после отправляет их в clickhouse пачкой.
+Изначально docker забирает логи из stdout контейнера, затем направляет их в
+fluent-bit с помощью драйвера fluentd. fluent-bit парсит и фильтрует логи, а
+после отправляет их в clickhouse пачкой.
 
-![Logs pipeline scheme](./img/logs-pipeline.jpg){width=600px}
+![Logs pipeline scheme](./docs/logs-pipeline.jpg){width=600px}
 
 ## 1. Подготавливаем Clickhouse
 
@@ -27,26 +27,10 @@ $ docker compose exec -it ch
 $ clickhouse-client
 ```
 
-Теперь клиент подключен к БД `default`
+Теперь клиент подключен к БД `default` и можно перейти к созданию таблицы для логов.
 
 **Создание таблицы логов**. Чтобы создать таблицу логов выполните SQL запрос
-предоставленный в [create-table.sql](./clickhouse-setup/create-table.sql).
-
-**Сменить пользователю default пароль**. По умолчанию пароль не задан. Чтобы задать пароль, нужно обновить файл
-`/etc/clickhouse-server/users.xml`. В файле `fluent-bit.conf` явно задан пароль `qwerty`,
-зададим его для пользователя `default`.
-
-В секции `<users>` нужно добавить пароль в тег `<password>`:
-
-```xml
-<clickhouse>
-    <users>
-        <default>
-            <password>qwerty</password>
-        </default>
-    </users>
-</clickhouse>
-```
+предоставленный в [create-logs-table.sql](./clickhouse/config/docker-entrypoint-initdb.d/create-logs-table.sql).
 
 ## 2. Запускаем fluent-bit
 
@@ -58,7 +42,8 @@ docker compose up -d fluent-bit
 
 ## 3. Запускаем пушку логов
 
-В качестве пушки логов используется два nodejs приложения, которые нужно предварительно сбилдить.
+В качестве пушки логов используется два Node.js приложения, которые нужно
+предварительно сбилдить.
 
 ```sh
 docker compose build first-app
@@ -76,5 +61,6 @@ docker compose up -d first-app second-app
 
 ## 4. Подключаемся к Grafana
 
-Чтобы подключиться к Clickhouse из Grafana воспользуйтесь документацией: 
-[Connecting Grafana to Clickhouse](https://clickhouse.com/docs/en/integrations/grafana#4-build-a-dashboard).
+Чтобы подключиться к Clickhouse из Grafana воспользуйтесь документацией:
+[Connecting Grafana to
+Clickhouse](https://clickhouse.com/docs/en/integrations/grafana#4-build-a-dashboard).

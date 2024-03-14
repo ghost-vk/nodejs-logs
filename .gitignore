@@ -1,4 +1,5 @@
 node_modules
 clickhouse/*
 !clickhouse/config
+!clickhouse/sql
 .idea
