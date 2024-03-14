@@ -1,5 +1,10 @@
 {
   "version": "1.0.0",
+  "name": "@proscom/dumb-log",
+  "private": true,
+  "author": {
+    "name": "Vlad Kuznetsov <v.kuznetsov@proscom.ru>"
+  },
   "packageManager": "yarn@4.1.1",
   "workspaces": [
     "packages/*"

@@ -295,13 +295,13 @@ __metadata:
   linkType: hard
 
 "@codemirror/view@npm:^6.0.0, @codemirror/view@npm:^6.17.0, @codemirror/view@npm:^6.23.0":
-  version: 6.25.1
-  resolution: "@codemirror/view@npm:6.25.1"
+  version: 6.26.0
+  resolution: "@codemirror/view@npm:6.26.0"
   dependencies:
     "@codemirror/state": "npm:^6.4.0"
     style-mod: "npm:^4.1.0"
     w3c-keyname: "npm:^2.2.4"
-  checksum: 10c0/21d41c40a7d44d12fc82efe5ec87d95bc044243d18b12cac04ec40895de34ae0988001b5270a3dc8b4687d0d65054ed848134764ae9bbebcc8e0a6d1a6f09b8a
+  checksum: 10c0/588a2bfea04a3cd36a6af46da29965726e05031b05d41c20094023cf33f3c086a3ca66f86e2269e09c4e30b52b1b284b6c10af3343c3b772b6371171d41448c2
   languageName: node
   linkType: hard
 
@@ -961,9 +961,9 @@ __metadata:
   linkType: hard
 
 "@faker-js/faker@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "@faker-js/faker@npm:8.1.0"
-  checksum: 10c0/e930fdebe46414174093f534418836e0fdd70c027caa25fbd2fa816f62f855616238402270c5a0033df987da8e8c97029820997788f1d6115ff1b7dc635bd00d
+  version: 8.4.1
+  resolution: "@faker-js/faker@npm:8.4.1"
+  checksum: 10c0/4f2aecddcfdc2cc8b50b2d15d1e37302a7c7a5bbd184ae910a9d271bc11248533ca74dcdd4a9ccbe20410553e7af0f6a4d334c5b955635e09a32ddf4a64942d4
   languageName: node
   linkType: hard
 
@@ -1387,6 +1387,16 @@ __metadata:
   checksum: 10c0/ef61f0a0fe94bb6e1143fc5b9d5a12e6ca9dbd2c57843ebf81db432c21b9f1005c09e8a1ef8b6d5ddfa42146ca65b640feb2d353bd0d3546da46ba59e48a5349
   languageName: node
   linkType: hard
+
+"@proscom/dumb-log@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@proscom/dumb-log@workspace:."
+  dependencies:
+    husky: "npm:^9.0.0"
+    lint-staged: "npm:^15.0.0"
+    prettier: "npm:^3.0.0"
+  languageName: unknown
+  linkType: soft
 
 "@radix-ui/number@npm:^1.0.1":
   version: 1.0.1
@@ -5886,9 +5896,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.668":
-  version: 1.4.704
-  resolution: "electron-to-chromium@npm:1.4.704"
-  checksum: 10c0/9e72a475e10fd5dab6a0f989fdd884a6f08584b6a5c66e541571c0353954a9afe82bb6208f243a36b045d100077fbe211adf43ba9f77b636801a576a1b07bd70
+  version: 1.4.705
+  resolution: "electron-to-chromium@npm:1.4.705"
+  checksum: 10c0/230c07f2cee16e838d6514f0ab78bef46579781bda34f5dce7006cfca1e0b50910b2eec9df5389a543b059564b6675e33616ae89d2053c6f9c742c2d8347ec85
   languageName: node
   linkType: hard
 
@@ -6597,9 +6607,9 @@ __metadata:
   linkType: hard
 
 "fast-redact@npm:^3.1.1":
-  version: 3.3.0
-  resolution: "fast-redact@npm:3.3.0"
-  checksum: 10c0/d81562510681e9ba6404ee5d3838ff5257a44d2f80937f5024c099049ff805437d0fae0124458a7e87535cc9dcf4de305bb075cab8f08d6c720bbc3447861b4e
+  version: 3.4.0
+  resolution: "fast-redact@npm:3.4.0"
+  checksum: 10c0/4e2ba1de87a11a24d35a2a9b2f5736107df1d1740e97a6b3103a8db5134de2a32a19d41210e66470322b08352bff8743527d18b4003b0ee04ead51b4c2fcfb97
   languageName: node
   linkType: hard
 
@@ -10804,23 +10814,23 @@ __metadata:
   linkType: hard
 
 "pino@npm:^8.15.6":
-  version: 8.15.6
-  resolution: "pino@npm:8.15.6"
+  version: 8.19.0
+  resolution: "pino@npm:8.19.0"
   dependencies:
     atomic-sleep: "npm:^1.0.0"
     fast-redact: "npm:^3.1.1"
     on-exit-leak-free: "npm:^2.1.0"
     pino-abstract-transport: "npm:v1.1.0"
     pino-std-serializers: "npm:^6.0.0"
-    process-warning: "npm:^2.0.0"
+    process-warning: "npm:^3.0.0"
     quick-format-unescaped: "npm:^4.0.3"
     real-require: "npm:^0.2.0"
     safe-stable-stringify: "npm:^2.3.1"
-    sonic-boom: "npm:^3.1.0"
+    sonic-boom: "npm:^3.7.0"
     thread-stream: "npm:^2.0.0"
   bin:
     pino: bin.js
-  checksum: 10c0/d3591e0b9db523f22cbef393cd1c7181c7ce5142ce0aaa20c51c7e71931baa0a3d629e94b95434eb2271fb7cdef29b20116dfbfacaccda10825ef69587a3b102
+  checksum: 10c0/53e6e9db91e451163e93294b0a7c5c8135742d58909dfc4a6fa1afc155b2b0dc44448ec3d057e08351951f9a3ea67e6ea8e72e952b64a1d889f4d5376cbd1a5d
   languageName: node
   linkType: hard
 
@@ -11023,10 +11033,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"process-warning@npm:^2.0.0":
-  version: 2.2.0
-  resolution: "process-warning@npm:2.2.0"
-  checksum: 10c0/22b252ca6c1edf7fe3c6ab30c39f9a2fa240dc5af46fd0f94c4dcbc577e7570dcccfc1cbfb4510db4759906b9170cb8b18c519d581cdf2ea649e5ac6bb9a0e60
+"process-warning@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "process-warning@npm:3.0.0"
+  checksum: 10c0/60f3c8ddee586f0706c1e6cb5aa9c86df05774b9330d792d7c8851cf0031afd759d665404d07037e0b4901b55c44a423f07bdc465c63de07d8d23196bb403622
   languageName: node
   linkType: hard
 
@@ -11412,8 +11422,8 @@ __metadata:
   linkType: hard
 
 "react-remove-scroll-bar@npm:^2.3.3, react-remove-scroll-bar@npm:^2.3.4":
-  version: 2.3.5
-  resolution: "react-remove-scroll-bar@npm:2.3.5"
+  version: 2.3.6
+  resolution: "react-remove-scroll-bar@npm:2.3.6"
   dependencies:
     react-style-singleton: "npm:^2.2.1"
     tslib: "npm:^2.0.0"
@@ -11423,7 +11433,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/21b2b02818b04f2c755c5062c90385420adb244107ac90ec87d43cd338760d3cc1cae6eeb59ab198bbc9e388e1a5909551e0b8a708b0d87ce221cf50951bb1fc
+  checksum: 10c0/4e32ee04bf655a8bd3b4aacf6ffc596ae9eb1b9ba27eef83f7002632ee75371f61516ae62250634a9eae4b2c8fc6f6982d9b182de260f6c11841841e6e2e7515
   languageName: node
   linkType: hard
 
@@ -11634,15 +11644,15 @@ __metadata:
   linkType: hard
 
 "readable-stream@npm:^4.0.0":
-  version: 4.4.2
-  resolution: "readable-stream@npm:4.4.2"
+  version: 4.5.2
+  resolution: "readable-stream@npm:4.5.2"
   dependencies:
     abort-controller: "npm:^3.0.0"
     buffer: "npm:^6.0.3"
     events: "npm:^3.3.0"
     process: "npm:^0.11.10"
     string_decoder: "npm:^1.3.0"
-  checksum: 10c0/cf7cc8daa2b57872d120945a20a1458c13dcb6c6f352505421115827b18ac4df0e483ac1fe195cb1f5cd226e1073fc55b92b569269d8299e8530840bcdbba40c
+  checksum: 10c0/a2c80e0e53aabd91d7df0330929e32d0a73219f9477dbbb18472f6fdd6a11a699fc5d172a1beff98d50eae4f1496c950ffa85b7cc2c4c196963f289a5f39275d
   languageName: node
   linkType: hard
 
@@ -12086,16 +12096,6 @@ __metadata:
   checksum: 10c0/90f8cdf9c2115223cbcfe91d932170a85c0928ae1943f45af6877907ea150585b80f656cf2bc471c6f809cb7e158dd85dbea9f91ab4fd5bce0eaf6c3f5f4fd92
   languageName: node
   linkType: hard
-
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    husky: "npm:^9.0.0"
-    lint-staged: "npm:^15.0.0"
-    prettier: "npm:^3.0.0"
-  languageName: unknown
-  linkType: soft
 
 "run-applescript@npm:^5.0.0":
   version: 5.0.0
@@ -12625,12 +12625,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sonic-boom@npm:^3.1.0":
-  version: 3.6.1
-  resolution: "sonic-boom@npm:3.6.1"
+"sonic-boom@npm:^3.7.0":
+  version: 3.8.0
+  resolution: "sonic-boom@npm:3.8.0"
   dependencies:
     atomic-sleep: "npm:^1.0.0"
-  checksum: 10c0/77f99927cf5d951267a4087b7523c1b6bf3378a6e97a0c4c093f2e6e90b288b9ffae6f1f0adf2a8176f426af1368429f97e9da6ad18f68f96a6226ee57bf95f4
+  checksum: 10c0/f3f61cb3fd5d4aad862dd957f22318ef85bf47d4f12ba27b915112908449f752dbdfc95a4739d2b4a9b2770e1e08d349adae9d1030fdab2a3d86128c6773a7f4
   languageName: node
   linkType: hard
 
@@ -12855,9 +12855,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi@workspace:packages/strapi":
+"strapi-logs@workspace:packages/strapi":
   version: 0.0.0-use.local
-  resolution: "strapi@workspace:packages/strapi"
+  resolution: "strapi-logs@workspace:packages/strapi"
   dependencies:
     "@strapi/plugin-cloud": "npm:4.20.5"
     "@strapi/plugin-i18n": "npm:4.20.5"

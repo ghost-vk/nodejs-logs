@@ -27,6 +27,21 @@ services:
         fluentd-address: localhost:24224
         tag: second-app
 
+  strapi:
+    build:
+      dockerfile: ./packages/strapi/Dockerfile
+      context: .
+    image: strapi:dev
+    env_file:
+      - ./packages/strapi/docker.env
+    ports:
+      - '1337:1337'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: strapi
+
   fluent-bit:
     image: fluent/fluent-bit
     container_name: fluent-bit
