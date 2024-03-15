@@ -4060,6 +4060,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.6.7":
+  version: 1.6.7
+  resolution: "axios@npm:1.6.7"
+  dependencies:
+    follow-redirects: "npm:^1.15.4"
+    form-data: "npm:^4.0.0"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: 10c0/131bf8e62eee48ca4bd84e6101f211961bf6a21a33b95e5dfb3983d5a2fe50d9fffde0b57668d7ce6f65063d3dc10f2212cbcb554f75cfca99da1c73b210358d
+  languageName: node
+  linkType: hard
+
 "b4a@npm:^1.6.4":
   version: 1.6.6
   resolution: "b4a@npm:1.6.6"
@@ -5865,6 +5876,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 10c0/48d92870076832af0418b13acd6e5a5a3e83bb00df690d9812e94b24aff62b88ade955ac99a05501305b8dc8f1b0ee7638b18493deb6fe93d680e5220936292f
+  languageName: node
+  linkType: hard
+
 "duplexer@npm:^0.1.2":
   version: 0.1.2
   resolution: "duplexer@npm:0.1.2"
@@ -7329,6 +7347,17 @@ __metadata:
   checksum: 10c0/368a30346a79722c3d5f880af07b947d522722e6c2b7e9e2ff7f49dfa52fdc08e8e2ffdbcb25b8fee2ac0c58c242f89b018d9e4613067a1a8b52f80c0d2226bc
   languageName: node
   linkType: hard
+
+"gun@workspace:packages/gun":
+  version: 0.0.0-use.local
+  resolution: "gun@workspace:packages/gun"
+  dependencies:
+    "@faker-js/faker": "npm:^8.1.0"
+    axios: "npm:^1.6.7"
+    dotenv: "npm:^16.4.5"
+    pino: "npm:^8.15.6"
+  languageName: unknown
+  linkType: soft
 
 "gzip-size@npm:^6.0.0":
   version: 6.0.0
@@ -10020,15 +10049,6 @@ __metadata:
   checksum: 10c0/556994e2d42c3a3f8b6bbd1c585d537d9cadf0d1dc35a830ce954fbd632e375f44595dd6650cb626ee7f49c1fc707eee6fa3d0986c412a333138dcd340ea9ec7
   languageName: node
   linkType: hard
-
-"node@workspace:packages/node":
-  version: 0.0.0-use.local
-  resolution: "node@workspace:packages/node"
-  dependencies:
-    "@faker-js/faker": "npm:^8.1.0"
-    pino: "npm:^8.15.6"
-  languageName: unknown
-  linkType: soft
 
 "nodemailer-fetch@npm:1.6.0":
   version: 1.6.0

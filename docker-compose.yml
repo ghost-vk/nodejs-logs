@@ -1,6 +1,21 @@
 version: '3.9'
 
 services:
+  # node приложение, делает запросы в другие приложения
+  # тем самым триггерит эти приложения писать логи
+  gun:
+    build:
+      dockerfile: ./packages/gun/gun.Dockerfile
+      context: .
+    image: gun:dev
+    env_file:
+      - ./packages/gun/docker.env
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: gun
+
   # node приложение 1; пишет 5 рандомных лога в секунду
   first-app:
     build:
