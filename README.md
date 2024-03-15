@@ -40,23 +40,29 @@ $ clickhouse-client
 docker compose up -d fluent-bit
 ```
 
-## 3. Запускаем пушку логов
+## 3. Запускаем приложения и пушку
 
-В качестве пушки логов используется два Node.js приложения, которые нужно
-предварительно сбилдить.
+Пока из приложений только Strapi. В качестве пушки логов используется Node.js
+приложение, которые нужно предварительно сбилдить.
 
 ```sh
-docker compose build first-app
+docker compose build strapi
 ```
 
 ```sh
-docker compose build second-app
+docker compose build gun
 ```
 
-Теперь запускаем пушку. Каждое приложение отправляет в stdout 5 логов в секунду.
+Теперь запускаем приложения:
 
 ```sh
-docker compose up -d first-app second-app
+docker compose up -d strapi
+```
+
+И пушку:
+
+```sh
+docker compose up -d gun
 ```
 
 ## 4. Подключаемся к Grafana
