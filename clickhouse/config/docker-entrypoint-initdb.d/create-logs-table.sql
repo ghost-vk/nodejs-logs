@@ -12,7 +12,7 @@ CREATE TABLE default.logs
     req_query String,
     req_params String,
     req_headers String,
-    res_code UInt8,
+    res_code UInt16,
     res_headers String,
     res_time UInt16,
     err_type LowCardinality(String),
