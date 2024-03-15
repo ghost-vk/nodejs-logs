@@ -4,7 +4,7 @@ services:
   # node приложение 1; пишет 5 рандомных лога в секунду
   first-app:
     build:
-      dockerfile: ./packages/node/first-app.Dockerfile
+      dockerfile: ./packages/gun/first-app.Dockerfile
       context: .
     container_name: first-app
     image: first-app:dev
@@ -17,7 +17,7 @@ services:
   # node приложение 2; пишет 5 рандомных лога в секунду
   second-app:
     build:
-      dockerfile: ./packages/node/second-app.Dockerfile
+      dockerfile: ./packages/gun/second-app.Dockerfile
       context: .
     container_name: second-app
     image: second-app:dev
