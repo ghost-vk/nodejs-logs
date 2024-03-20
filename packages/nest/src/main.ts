@@ -13,6 +13,6 @@ async function bootstrap(): Promise<void> {
   // https://github.com/iamolegga/nestjs-pino/blob/master/src/LoggerErrorInterceptor.ts
   app.useGlobalInterceptors(new LoggerErrorInterceptor());
 
-  await app.listen(3000);
+  await app.listen(3535);
 }
 bootstrap();
