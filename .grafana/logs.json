@@ -1,0 +1,450 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "fe49ee7e-3751-4b48-8d74-474bedaad55e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false,
+            "minWidth": 300
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 195
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "level"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 60
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "ERROR": {
+                        "color": "red",
+                        "index": 2
+                      },
+                      "HTTP": {
+                        "color": "blue",
+                        "index": 3
+                      },
+                      "INFO": {
+                        "color": "blue",
+                        "index": 0
+                      },
+                      "WARN": {
+                        "color": "yellow",
+                        "index": 1
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "container_name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 149
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "msg"
+            },
+            "properties": [
+              {
+                "id": "custom.inspect",
+                "value": true
+              },
+              {
+                "id": "custom.width",
+                "value": 623
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "res_code"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 80
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "transparent",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 200
+                    },
+                    {
+                      "color": "blue",
+                      "value": 300
+                    },
+                    {
+                      "color": "orange",
+                      "value": 400
+                    },
+                    {
+                      "color": "red",
+                      "value": 500
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "req_url"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 117
+              },
+              {
+                "id": "custom.inspect",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "err_stack"
+            },
+            "properties": [
+              {
+                "id": "custom.inspect",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "req_method"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 101
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "DELETE": {
+                        "color": "red",
+                        "index": 0
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "app"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 149
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 27,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "fe49ee7e-3751-4b48-8d74-474bedaad55e"
+          },
+          "editorType": "sql",
+          "format": 1,
+          "meta": {
+            "builderOptions": {
+              "columns": [],
+              "database": "",
+              "limit": 1000,
+              "mode": "list",
+              "queryType": "table",
+              "table": ""
+            }
+          },
+          "pluginVersion": "4.0.3",
+          "queryType": "table",
+          "rawSql": "SELECT container_name as app, level, res_code, req_method, req_url, msg, err_stack \nFROM logs\nWHERE container_name IN (${container_name})\n  AND level IN (${level})\n  AND res_code BETWEEN ${from_code} AND ${to_code}\nORDER BY time DESC \nLIMIT 10000;",
+          "refId": "A"
+        }
+      ],
+      "title": "Logs",
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 38,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": ["/dumb-log-strapi-1"],
+          "value": ["/dumb-log-strapi-1"]
+        },
+        "definition": "select distinct(container_name) from logs",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Container Name",
+        "multi": true,
+        "name": "container_name",
+        "options": [],
+        "query": "select distinct(container_name) from logs",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": ["ERROR"],
+          "value": ["ERROR"]
+        },
+        "definition": "select distinct(level) from logs where level != '' order by level desc",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Log Level",
+        "multi": true,
+        "name": "level",
+        "options": [],
+        "query": "select distinct(level) from logs where level != '' order by level desc",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "HTTP response status code",
+        "hide": 0,
+        "includeAll": false,
+        "label": "From Code",
+        "multi": false,
+        "name": "from_code",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "200",
+            "value": "200"
+          },
+          {
+            "selected": false,
+            "text": "300",
+            "value": "300"
+          },
+          {
+            "selected": false,
+            "text": "400",
+            "value": "400"
+          },
+          {
+            "selected": false,
+            "text": "500",
+            "value": "500"
+          }
+        ],
+        "query": "0, 200, 300, 400, 500",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "599",
+          "value": "599"
+        },
+        "description": "HTTP response status code",
+        "hide": 0,
+        "includeAll": false,
+        "label": "To Code",
+        "multi": false,
+        "name": "to_code",
+        "options": [
+          {
+            "selected": false,
+            "text": "299",
+            "value": "299"
+          },
+          {
+            "selected": false,
+            "text": "399",
+            "value": "399"
+          },
+          {
+            "selected": false,
+            "text": "499",
+            "value": "499"
+          },
+          {
+            "selected": true,
+            "text": "599",
+            "value": "599"
+          }
+        ],
+        "query": "299, 399, 499, 599",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Logs",
+  "uid": "ef626328-3a74-49da-bf35-eab10fc43c5c",
+  "version": 28,
+  "weekStart": ""
+}
