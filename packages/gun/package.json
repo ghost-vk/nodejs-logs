@@ -10,8 +10,6 @@
     "pino": "^8.15.6"
   },
   "scripts": {
-    "start-first": "node first-app.js",
-    "start-second": "node second-app.js",
-    "start-gun": "node gun.js"
+    "fire": "node app.js"
   }
 }
