@@ -19,6 +19,7 @@ ENV PATH /usr/local/share/.config/yarn/global/node_modules/.bin:$PATH
 COPY .yarn .yarn
 COPY package.json yarn.lock .yarnrc.yml .
 COPY packages/gun/package.json packages/gun/package.json
+COPY packages/nest/package.json packages/nest/package.json
 COPY packages/strapi/package.json packages/strapi/package.json
 RUN yarn workspaces focus strapi-logs --production
 COPY . .

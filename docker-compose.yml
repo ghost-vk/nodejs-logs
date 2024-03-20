@@ -57,6 +57,21 @@ services:
         fluentd-address: localhost:24224
         tag: strapi
 
+  nest:
+    build:
+      dockerfile: ./packages/nest/Dockerfile
+      context: .
+    image: nest:dev
+    env_file:
+      - ./packages/nest/docker.env
+    ports:
+      - '3535:3535'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: nest
+
   fluent-bit:
     image: fluent/fluent-bit
     container_name: fluent-bit
