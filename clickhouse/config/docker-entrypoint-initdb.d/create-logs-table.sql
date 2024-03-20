@@ -17,8 +17,9 @@ CREATE TABLE default.logs
     res_time UInt16,
     err_type LowCardinality(String),
     err_msg String,
+    err_res String,
     err_stack String,
-    err_status UInt8,
+    err_options String,
     err_name LowCardinality(String),
 )
     ENGINE = MergeTree
