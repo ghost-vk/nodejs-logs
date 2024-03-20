@@ -16,32 +16,6 @@ services:
         fluentd-address: localhost:24224
         tag: gun
 
-  # node приложение 1; пишет 5 рандомных лога в секунду
-  first-app:
-    build:
-      dockerfile: ./packages/gun/first-app.Dockerfile
-      context: .
-    container_name: first-app
-    image: first-app:dev
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: localhost:24224
-        tag: first-app
-
-  # node приложение 2; пишет 5 рандомных лога в секунду
-  second-app:
-    build:
-      dockerfile: ./packages/gun/second-app.Dockerfile
-      context: .
-    container_name: second-app
-    image: second-app:dev
-    logging:
-      driver: fluentd
-      options:
-        fluentd-address: localhost:24224
-        tag: second-app
-
   strapi:
     build:
       dockerfile: ./packages/strapi/Dockerfile
