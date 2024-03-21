@@ -1,9 +1,11 @@
-import { stdTimeFunctions } from 'pino';
-import { Options } from 'pino-http';
+import { Application } from 'express';
+import { nanoid } from 'nanoid';
+import pino, { stdTimeFunctions } from 'pino';
+import pinoHttp, { Options } from 'pino-http';
 
 import { cfg } from './config';
 
-export function getJsonLoggerConfig(): Options {
+function getJsonLoggerConfig(): Options {
   return {
     level: cfg.LOG_LEVEL,
     redact: ['req.headers.cookie', 'req.headers.authorization'],
@@ -16,7 +18,7 @@ export function getJsonLoggerConfig(): Options {
   };
 }
 
-export function getPrettyLoggerConfig(): Options {
+function getPrettyLoggerConfig(): Options {
   return {
     level: cfg.LOG_LEVEL,
     redact: ['req.headers.cookie', 'req.headers.authorization'],
@@ -33,4 +35,22 @@ export function getPrettyLoggerConfig(): Options {
       },
     },
   };
+}
+
+export const logger = pino(
+  cfg.LOG_JSON ? getJsonLoggerConfig() : getPrettyLoggerConfig(),
+);
+
+export function attachLoggerToApplication(app: Application): void {
+  app.use(
+    pinoHttp({
+      logger,
+      // Можно использовать crypto.randomUUID(), если есть причины не
+      //   устанавливать nanoid
+      // nanoid быстрее и дает более короткие идентификаторы
+      genReqId: () => nanoid(),
+      // quietReqLogger: true,
+      autoLogging: false,
+    }),
+  );
 }
