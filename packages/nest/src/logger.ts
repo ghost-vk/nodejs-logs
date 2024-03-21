@@ -41,6 +41,12 @@ export function getPrettyLoggerConfig(): {
       redact: ['req.headers.cookie', 'req.headers.authorization'],
       timestamp: stdTimeFunctions.isoTime,
       autoLogging: false,
+      transport: {
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+        },
+      },
     },
   };
 }
