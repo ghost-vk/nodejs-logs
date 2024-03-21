@@ -46,6 +46,21 @@ services:
         fluentd-address: localhost:24224
         tag: nest
 
+  express:
+    build:
+      dockerfile: ./packages/express/Dockerfile
+      context: .
+    image: express:dev
+    env_file:
+      - ./packages/express/docker.env
+    ports:
+      - '4000:4000'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: nest
+
   fluent-bit:
     image: fluent/fluent-bit
     container_name: fluent-bit
