@@ -10,17 +10,6 @@ export function getJsonLoggerConfig(): { pinoHttp: Options } {
       level: cfg.LOG_LEVEL,
       redact: ['req.headers.cookie', 'req.headers.authorization'],
       timestamp: stdTimeFunctions.unixTime,
-      customLevels: {
-        emerg: 80,
-        alert: 70,
-        crit: 60,
-        error: 50,
-        warn: 40,
-        info: 30,
-        trace: 20,
-        debug: 10,
-      },
-      useOnlyCustomLevels: true,
       formatters: {
         level: (label): { level: string } => ({ level: label.toUpperCase() }),
       },
