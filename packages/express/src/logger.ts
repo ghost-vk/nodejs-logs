@@ -10,8 +10,6 @@ function getJsonLoggerConfig(): Options {
     level: cfg.LOG_LEVEL,
     redact: ['req.headers.cookie', 'req.headers.authorization'],
     timestamp: stdTimeFunctions.unixTime,
-    autoLogging: cfg.LOG_HTTP,
-    quietReqLogger: cfg.LOG_QUIET_REQ,
     formatters: {
       level: (label): { level: string } => ({ level: label.toUpperCase() }),
     },
@@ -23,8 +21,6 @@ function getPrettyLoggerConfig(): Options {
     level: cfg.LOG_LEVEL,
     redact: ['req.headers.cookie', 'req.headers.authorization'],
     timestamp: stdTimeFunctions.isoTime,
-    autoLogging: cfg.LOG_HTTP,
-    quietReqLogger: cfg.LOG_QUIET_REQ,
     formatters: {
       level: (label): { level: string } => ({ level: label.toUpperCase() }),
     },
@@ -49,8 +45,8 @@ export function attachLoggerToApplication(app: Application): void {
       //   устанавливать nanoid
       // nanoid быстрее и дает более короткие идентификаторы
       genReqId: () => nanoid(),
-      // quietReqLogger: true,
-      autoLogging: false,
+      quietReqLogger: cfg.LOG_QUIET_REQ,
+      autoLogging: cfg.LOG_HTTP,
     }),
   );
 }
