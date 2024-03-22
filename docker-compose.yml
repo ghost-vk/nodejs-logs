@@ -5,7 +5,7 @@ services:
   # тем самым триггерит эти приложения писать логи
   gun:
     build:
-      dockerfile: ./packages/gun/gun.Dockerfile
+      dockerfile: ./packages/gun/Dockerfile
       context: .
     image: gun:dev
     env_file:

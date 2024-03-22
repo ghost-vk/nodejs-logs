@@ -6,6 +6,7 @@ const { pino } = require('./logger');
 
 const strapiUrl = process.env.STRAPI_URL;
 const nestUrl = process.env.NEST_URL;
+const expressUrl = process.env.EXPRESS_URL;
 
 function isEnvTrue(k) {
   if (typeof k !== 'string') {
@@ -75,7 +76,47 @@ async function triggerNestError() {
   }
 }
 
-(function () {
+// Should always be successfull
+async function requestExpressHello() {
+  try {
+    await axios.get(`${expressUrl}/hello`);
+    pino.info('[express] GET /hello: completed');
+  } catch (err) {
+    pino.error(`[express] GET /hello: request error: ${err.message}`);
+  }
+}
+
+// Should always be successfull
+async function requestExpressError() {
+  try {
+    await axios.get(`${expressUrl}/error`);
+    pino.info('[express] GET /error: completed');
+  } catch (err) {
+    pino.error(`[express] GET /error: request error: ${err.message}`);
+  }
+}
+
+// Always triggers unwrapped in try..catch error
+async function triggerUnwrappedExpressError() {
+  try {
+    await axios.post(`${expressUrl}/unwrapped-error`);
+    pino.info('[express] POST /unwrapped-error: completed');
+  } catch (err) {
+    pino.error(`[express] POST /unwrapped-error: request error: ${err.message}`);
+  }
+}
+
+// Always triggers wrapped in try..catch error
+async function triggerWrappedExpressError() {
+  try {
+    await axios.post(`${expressUrl}/wrapped-error`);
+    pino.info('[express] POST /wrapped-error: completed');
+  } catch (err) {
+    pino.error(`[express] POST /wrapped-error: request error: ${err.message}`);
+  }
+}
+
+(function() {
   if (isEnvTrue('STRAPI_FIRE')) {
     setInterval(getStrapiPosts, 1500);
     setInterval(createStrapiPost, 1500);
@@ -86,5 +127,12 @@ async function triggerNestError() {
     setInterval(requestNestHello, 1500);
     setInterval(triggerNestError, 1500);
     setInterval(requestNestError, 1500);
+  }
+
+  if (isEnvTrue('EXPRESS_FIRE')) {
+    setInterval(requestExpressHello, 1500);
+    setInterval(requestExpressError, 1500);
+    setInterval(triggerUnwrappedExpressError, 1500);
+    setInterval(triggerWrappedExpressError, 1500);
   }
 })();
