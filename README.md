@@ -1,38 +1,41 @@
-# Пример настройки логирования с использованием Clickhouse и Fluentbit
+# Логирование Node.js приложений с использованием ClickHouse, Fluentbit, Grafana
 
-В `docker-compose.yml` определены два приложения: `first-app`, `second-app`. В
-репозитории показаны настройки fluent-bit, сервисов docker compose, clickhouse
-для настройки пайплайна логов.
+В репозитории на примере нескольких Node.js приложений показана настройка
+логеров Pino, Winston. Приложения пишут логи в stdout. Драйвером выступает
+fluentd; fluent-bit парсит логи и передает в ClickHouse. Визуализация
+осуществляется в Grafana.
 
-Изначально docker забирает логи из stdout контейнера, затем направляет их в
-fluent-bit с помощью драйвера fluentd. fluent-bit парсит и фильтрует логи, а
-после отправляет их в clickhouse пачкой.
+![](./docs/logs.png)
 
-![Logs pipeline scheme](./docs/logs-pipeline.jpg){width=600px}
+**Приложения**
 
-## 1. Подготавливаем Clickhouse
+- [Express (Pino)](./packages/express)
+- [Nest (Pino)](./packages/nest)
+- [Strapi (Winston)](./packages/strapi)
+
+В пакете [packages/gun](./packages/gun) имплементирована пушка запросов,
+написана на Node.js. Она отправляет запросы в указанные выше приложения.
+
+Все приложения и пушка поднимаются в Docker.
+
+## Демонстрационный запуск
+
+### 1. Подготавливаем Clickhouse
 
 Для запуска демонстрации надо подготовить Clickhouse.
 
 Сначала запустим контейнер:
 
 ```shell
-docker compose up -d ch
+docker compose up -d clickhouse
 ```
 
-В контейнере зайдем в clickhouse-client
+- Автоматически будет создана таблица `logs` в БД `default`. Таблица определена
+  в [этом
+  файле](./clickhouse/config/docker-entrypoint-initdb.d/create-logs-table.sql).
+- Автоматически будет создан пользователь `default` с паролем `qwerty`.
 
-```shell
-$ docker compose exec -it ch
-$ clickhouse-client
-```
-
-Теперь клиент подключен к БД `default` и можно перейти к созданию таблицы для логов.
-
-**Создание таблицы логов**. Чтобы создать таблицу логов выполните SQL запрос
-предоставленный в [create-logs-table.sql](./clickhouse/config/docker-entrypoint-initdb.d/create-logs-table.sql).
-
-## 2. Запускаем fluent-bit
+### 2. Запускаем fluent-bit
 
 До запуска пушки должен уже быть запущен fluent-bit
 
@@ -40,33 +43,33 @@ $ clickhouse-client
 docker compose up -d fluent-bit
 ```
 
-## 3. Запускаем приложения и пушку
-
-Пока из приложений только Strapi. В качестве пушки логов используется Node.js
-приложение, которые нужно предварительно сбилдить.
-
-```sh
-docker compose build strapi
-```
-
-```sh
-docker compose build gun
-```
-
-Теперь запускаем приложения:
-
-```sh
-docker compose up -d strapi
-```
-
-И пушку:
-
-```sh
-docker compose up -d gun
-```
-
-## 4. Подключаемся к Grafana
+## 4. Подключаем Grafana к ClickHouse
 
 Чтобы подключиться к Clickhouse из Grafana воспользуйтесь документацией:
 [Connecting Grafana to
 Clickhouse](https://clickhouse.com/docs/en/integrations/grafana#4-build-a-dashboard).
+
+В файле [.grafana/logs.json](./.grafana/logs.json) можно найти конфигурацию
+дашборда. Там уже определены SQL запросы, переменные и подсветка, достаточно
+импортировать дашборд себе.
+
+### 4. Запускаем приложения и пушку
+
+В каждом из приложений есть env переменные определяющие характер логирования.
+Достаточно скопировать в каждом из пакетов `example.env` в `docker.env`.
+
+```sh
+cp example.env docker.env
+```
+
+**Собираем образы**
+
+```sh
+docker compose build express gun nest strapi
+```
+
+**Запускаем приложения и пушку**
+
+```sh
+docker compose up -d express gun nest strapi
+```
