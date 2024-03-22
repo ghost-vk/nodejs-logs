@@ -6,7 +6,7 @@ export function errorInterceptor(
   res: Response,
   next: NextFunction,
 ): void {
-  req.log.error('intercept error', err);
+  req.log.error({ message: 'intercept error', err });
 
   if (res.headersSent) {
     next(err);
