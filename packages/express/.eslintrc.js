@@ -62,6 +62,14 @@ module.exports = {
             next: ['const', 'let', 'var'],
           },
         ],
+        '@typescript-eslint/no-unused-vars': [
+          1,
+          {
+            vars: 'all',
+            args: 'after-used',
+            argsIgnorePattern: '^_',
+          },
+        ],
       },
     },
   ],
